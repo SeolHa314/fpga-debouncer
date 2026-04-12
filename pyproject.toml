@@ -1,0 +1,10 @@
+[project]
+name = "gowin-fpga-template"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "yowasp-nextpnr-himbaechel-gowin>=0.10.0.0.post753",
+    "yowasp-yosys>=0.63.0.0.post1107",
+]
