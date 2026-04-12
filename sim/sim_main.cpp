@@ -3,7 +3,7 @@
 #include <verilated.h>
 
 int main(int argc, char **argv) {
-  int clock_cycles = 200;
+  int clock_cycles = 500;
   Verilated::mkdir("logs");
   const std::unique_ptr<VerilatedContext> contextp{new VerilatedContext};
 
@@ -15,25 +15,25 @@ int main(int argc, char **argv) {
 
   const std::unique_ptr<Vtop> top{new Vtop{contextp.get(), "TOP"}};
 
-  top->rst_n = !0;
   top->clk = 0;
+  top->btn = !0;
   top->leds = 0b111110;
 
   while (clock_cycles > 0) {
     contextp->timeInc(1);
     top->clk = !top->clk;
     if (top->clk) {
-      if (contextp->time() > 40 && contextp->time() < 46) {
-        top->rst_n = !1;
-      } else {
-        top->rst_n = !0;
+      if (contextp->time() % 25 == 0) {
+        top->btn = !top->btn;
+      } else if (contextp->time() % 25 == 12) {
+        top->btn = !top->btn;
       }
     }
     top->eval();
     clock_cycles -= top->clk;
 
-    VL_PRINTF("[%" PRId64 "] clk=%x rst_n=%x\n", contextp->time(), top->clk,
-              top->rst_n);
+    VL_PRINTF("[%" PRId64 "] clk=%x btn=%x\n", contextp->time(), top->clk,
+              top->btn);
   }
 
   top->final();

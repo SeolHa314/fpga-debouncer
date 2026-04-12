@@ -49,6 +49,8 @@ VERILATOR_FLAGS += --coverage
 #VERILATOR_FLAGS += --debug
 # Add this trace to get a backtrace in gdb
 #VERILATOR_FLAGS += --gdbbt
+# Enable timing controls in verilator
+VERILATOR_FLAGS += --timing
 
 # Input files for Verilator
 VERILATOR_INPUT = -f input.vc top.v sim_main.cpp
