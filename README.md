@@ -1,8 +1,12 @@
-# Template for `tangnano9k` development
+# Implementing Button Debouncer
 
-Open-source suite for synthesizing, Place & Route, and flashing for `tangnano9k`
+A learning repository for basic FPGA skills.
 
-~~this slop works!!~~
+## Implementation Details
+
+LED's brightness cycles through 0, 25, 50, 100% when button on the right is pushed.
+To detect the button press stably, the debouncer using shifted registers is implemented by a separated module.
+PWM operations are also in separated module for code readability.
 
 ## Prerequisites
 

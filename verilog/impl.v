@@ -88,7 +88,7 @@ module led
     input sys_clk,          // clk input
     input sys_rst_n,        // reset input
     input sys_btn,          // button input
-    output [5:0] leds    // 6 LEDS pin
+    output [5:0] leds       // 6 LEDS pin
 );
 
 reg [1:0] mode;
