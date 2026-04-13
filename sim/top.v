@@ -1,12 +1,14 @@
 `define clkcnt 19'd2
+`define width 4
 `include "impl.v"
 
 module top
 (
   input clk,          // clk input
   input btn,
-  output [5:0] leds = 6'b111110      // 6 LEDS pin
+  output [5:0] leds = 6'b111111      // 6 LEDS pin
 );
+  reg rst_n;
 
   led blinker(
       .sys_clk(clk),
@@ -14,8 +16,6 @@ module top
       .sys_btn(btn),
       .leds(leds)
   );
-  
-  reg rst_n;
 
   // Print some stuff as an example
   initial begin

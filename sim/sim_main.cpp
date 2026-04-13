@@ -3,7 +3,7 @@
 #include <verilated.h>
 
 int main(int argc, char **argv) {
-  int clock_cycles = 500;
+  int clock_cycles = 1000;
   Verilated::mkdir("logs");
   const std::unique_ptr<VerilatedContext> contextp{new VerilatedContext};
 
@@ -23,9 +23,9 @@ int main(int argc, char **argv) {
     contextp->timeInc(1);
     top->clk = !top->clk;
     if (top->clk) {
-      if (contextp->time() % 25 == 0) {
+      if (contextp->time() % 200 == 73) {
         top->btn = !top->btn;
-      } else if (contextp->time() % 25 == 12) {
+      } else if (contextp->time() % 200 == 79) {
         top->btn = !top->btn;
       }
     }
